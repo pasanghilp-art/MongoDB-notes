@@ -120,3 +120,88 @@ name: 'julian',
 hobby: 'fighting'
 }
 ]
+appdb> db.users.find().sort({ name: 1,age: 1}).limit(2)
+[
+{ \_id: ObjectId('6aa96efaa43307d878e6826f'), name: 'Dho' },
+{
+\_id: ObjectId('6aa96e4ca43307d878e6826e'),
+name: 'Pasang Tamang',
+age: 19,
+address: { street: 'Ramhiti' },
+hobbies: [ 'Running' ]
+}
+]
+appdb> db.users.find().sort({ name: -1, age: -1 }).limit(2)
+[
+{ _id: ObjectId('6aa96efaa43307d878e68270'), name: 'mikey' },
+{ _id: ObjectId('6aa97152f9f0c64ad791d244'), name: 'melisa' }
+]
+appdb> db.users.find().skip(2).limit(2)
+[
+{ _id: ObjectId('6aa96efaa43307d878e6826f'), name: 'Dho' },
+{ _id: ObjectId('6aa96efaa43307d878e68270'), name: 'mikey' }
+]
+appdb> db.users.find({ name: {$eq: "Pasang Tamang"}})
+[
+  {
+    _id: ObjectId('6aa96e4ca43307d878e6826e'),
+    name: 'Pasang Tamang',
+    age: 19,
+    address: { street: 'Ramhiti' },
+    hobbies: [ 'Running' ]
+  }
+]
+appdb> db.users.find({ name: {$ne: "Pasang Tamang"}})
+[
+{ _id: ObjectId('6aa8e9f2dde3fd95e793fb14'), name: 'djAlok' },
+{ _id: ObjectId('6aa96efaa43307d878e6826f'), name: 'Dho' },
+{ _id: ObjectId('6aa96efaa43307d878e68270'), name: 'mikey' },
+{
+_id: ObjectId('6aa97101f9f0c64ad791d243'),
+name: 'julian',
+hobby: 'fighting'
+},
+{ _id: ObjectId('6aa97152f9f0c64ad791d244'), name: 'melisa' },
+{ _id: ObjectId('6aa97152f9f0c64ad791d245'), name: 'fanny' }
+]
+appdb> db.users.find({ age: {$gt: 5}})
+[
+{
+\_id: ObjectId('6aa96e4ca43307d878e6826e'),
+name: 'Pasang Tamang',
+age: 19,
+address: { street: 'Ramhiti' },
+hobbies: [ 'Running' ]
+}
+]
+appdb> db.users.find({ age: {$exists: true}})
+[
+{
+\_id: ObjectId('6aa96e4ca43307d878e6826e'),
+name: 'Pasang Tamang',
+age: 19,
+address: { street: 'Ramhiti' },
+hobbies: [ 'Running' ]
+}
+]
+appdb> db.users.deleteOne({ name: "melisa"})
+{ acknowledged: true, deletedCount: 1 }
+appdb> db.users.find()
+[
+{ \_id: ObjectId('6aa8e9f2dde3fd95e793fb14'), name: 'djAlok' },
+{
+\_id: ObjectId('6aa96e4ca43307d878e6826e'),
+name: 'pasang',
+age: 22,
+address: { street: 'Ramhiti' },
+hobbies: [ 'Running' ]
+},
+{ \_id: ObjectId('6aa96efaa43307d878e6826f'), name: 'Dho' },
+{ \_id: ObjectId('6aa96efaa43307d878e68270'), name: 'mikey' },
+{
+\_id: ObjectId('6aa97101f9f0c64ad791d243'),
+name: 'julian',
+hobby: 'fighting'
+},
+{ \_id: ObjectId('6aa97152f9f0c64ad791d245'), name: 'fanny' }
+]
