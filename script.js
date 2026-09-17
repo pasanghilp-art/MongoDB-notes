@@ -13,6 +13,7 @@ async function run(){
                 address: {
                     street: "Main st"
                 },
+                email: 'pasanghilp@gmail.com',
              })
              console.log(user)
         } catch (e) {
