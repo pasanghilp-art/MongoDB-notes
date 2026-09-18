@@ -5,6 +5,7 @@ mongoose.connect("mongodb://localhost/usersdb");
 
 run()
 async function run(){
+    /*
     try {
          const user = await User.create({ 
                 name: "Pasang",
@@ -18,5 +19,13 @@ async function run(){
              console.log(user)
         } catch (e) {
         console.log(e.message)
+    }
+        */
+
+    try {
+        const user =await User.where("age").gt("12")
+        console.log(user)
+    } catch(e){
+        console.log(e.message);
     }
 }
